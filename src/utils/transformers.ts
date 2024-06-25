@@ -1,6 +1,6 @@
 import Movie from "../models/Movie"
 
-interface MovieData {
+export interface MovieData {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -17,7 +17,7 @@ interface MovieData {
   vote_count: number;
 }
 
-function formatMovie(data: MovieData) {
+export function formatMovie(data: MovieData) {
   const movie: Movie = {
     id: data.id,
     title: data.title,
@@ -28,5 +28,3 @@ function formatMovie(data: MovieData) {
   }
   return movie;
 }
-
-export default formatMovie

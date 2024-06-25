@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
-import formatMovie from "../src/utils/transformers"
-import {data1, data2, incorrectDataType, missingRequiredData, missingData, dataMovie1, dataMovie2} from "./fakeData"
+import { formatMovie } from "../src/utils/transformers"
+import { data1, data2, incorrectDataType, missingRequiredData, missingData, dataMovie1, dataMovie2 } from "./fakeData"
 
 describe("formatMovie", () => {
   test("Transforms object into a type Movie object", () => {
