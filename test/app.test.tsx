@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react';
-import App from "../src/App.tsx";
+import App from "../src/components/App.tsx";
 
 describe("App", () => {
   test("Renders the text 'learn more'", () => {

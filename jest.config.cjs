@@ -2,6 +2,7 @@
 
 module.exports = {
   collectCoverage: true,
+  verbose: true,
   testEnvironment: "jsdom",
   transform: {
     "^.+\\.(ts|js|tsx|jsx)$": "@swc/jest",
