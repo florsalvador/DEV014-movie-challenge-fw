@@ -36,31 +36,3 @@ describe("getMovies", () => {
     }
   });
 });
-
-
-  // beforeEach(() => {
-  //   global.fetch = jest.fn(() =>
-  //     Promise.resolve({
-  //       json: () => Promise.resolve(response),
-  //     })
-  //   ) as jest.Mock;
-
-  //   // jest.spyOn(global, 'fetch').mockImplementation(() => {
-  //   //   return Promise.resolve(
-  //   //     new Response(
-  //   //       JSON.stringify(response), 
-  //   //       { 
-  //   //         status: 200, 
-  //   //         statusText: 'OK', 
-  //   //         headers: { 'Content-Type': 'application/json' }
-  //   //       }
-  //   //     )
-  //   //   );
-  //   // });
-
-  //   // jest.mock("import.meta", () => ({
-  //   //   env: {
-  //   //     VITE_TOKEN_API: "fake token"
-  //   //   }
-  //   // }));
-  // });

@@ -103,7 +103,7 @@ export const missingData = {
 export const dataMovie1 = {
   id: 1022789,
   title: "Inside Out 2",
-  releaseDate: "2024-06-11",
+  year: "2024",
   posterPath: "/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
   genreIds: [ 16, 10751, 18, 12, 35 ],
   overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust."
@@ -112,7 +112,7 @@ export const dataMovie1 = {
 export const dataMovie2 = {
   id: 1136318,
   title: "Battle Over Britain",
-  releaseDate: "2023-12-01",
+  year: "2023",
   posterPath: "/8htJ7keZTwa08aC9OKyiqaq1cNJ.jpg",
   genreIds: [ 10752 ],
   overview: "A young pilot, fresh out of training, is called to join a Flight while they wait for the call to scramble."
@@ -175,7 +175,7 @@ export const transformedData = [
   {
     "id": 1022789,
     "title": "Inside Out 2",
-    "releaseDate": "2024-06-11",
+    "year": "2024",
     "posterPath": "/oxxqiyWrnM0XPnBtVe9TgYWnPxT.jpg",
     "genreIds": [ 16, 10751, 18, 12, 35 ],
     "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone."
@@ -183,7 +183,7 @@ export const transformedData = [
   {
     "id": 653346,
     "title": "Kingdom of the Planet of the Apes",
-    "releaseDate": "2024-05-08",
+    "year": "2024",
     "posterPath": "/gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
     "genreIds": [ 878, 12, 28 ],
     "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike."
