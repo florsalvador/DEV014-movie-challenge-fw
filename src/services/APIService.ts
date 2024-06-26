@@ -1,13 +1,14 @@
 import { formatMovie, MovieData } from "../utils/transformers";
 import Movie from "../models/Movie";
+import { getToken } from "../utils/getEnv";
 
 function getMovies(): Promise<Movie[]> {
   const url = "https://api.themoviedb.org/3/discover/movie";
-  const token = import.meta.env.VITE_TOKEN_API;
+  const token = getToken();
   const request: RequestInit = {
     headers: {
       "Authorization": `Bearer ${token}`
-    },
+    }
   }
 
   return fetch(url, request)

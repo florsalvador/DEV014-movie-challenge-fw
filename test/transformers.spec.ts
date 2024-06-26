@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
 import { formatMovie } from "../src/utils/transformers"
-import { data1, data2, incorrectDataType, missingRequiredData, missingData, dataMovie1, dataMovie2 } from "./fakeData"
+import { data1, data2, incorrectDataType, missingRequiredData, missingData, dataMovie1, dataMovie2 } from "./mockData"
 
 describe("formatMovie", () => {
   test("Transforms object into a type Movie object", () => {
@@ -22,8 +22,8 @@ describe("formatMovie", () => {
     expect(formatMovie(missingData)).toEqual(dataMovie2);
   });
 
-  console.log("Correct data in object", formatMovie(data1));
-  console.log("Property 'id' has a wrong data type", formatMovie(incorrectDataType));
-  console.log("Object is missing 'poster_path', a required property", formatMovie(missingRequiredData));
-  console.log("Object is missing 'vote_count' property", formatMovie(missingData));
+  // console.log("Correct data in object", formatMovie(data1));
+  // console.log("Property 'id' has a wrong data type", formatMovie(incorrectDataType));
+  // console.log("Object is missing 'poster_path', a required property", formatMovie(missingRequiredData));
+  // console.log("Object is missing 'vote_count' property", formatMovie(missingData));
 });
