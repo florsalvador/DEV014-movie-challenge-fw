@@ -1,7 +1,7 @@
 type Movie = {
   id: number;
   title: string;
-  releaseDate: string;
+  year: string;
   posterPath: string;
   genreIds: number[];
   overview: string

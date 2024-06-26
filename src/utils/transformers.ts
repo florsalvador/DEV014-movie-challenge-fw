@@ -21,7 +21,7 @@ export function formatMovie(data: MovieData) {
   const movie: Movie = {
     id: data.id,
     title: data.title,
-    releaseDate: data.release_date,
+    year: data.release_date.slice(0, 4),
     posterPath: data.poster_path,
     genreIds: data.genre_ids,
     overview: data.overview
