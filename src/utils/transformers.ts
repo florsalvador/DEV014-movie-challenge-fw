@@ -22,7 +22,7 @@ export function formatMovie(data: MovieData) {
     id: data.id,
     title: data.title,
     year: data.release_date.slice(0, 4),
-    posterPath: data.poster_path,
+    posterPath: `https://image.tmdb.org/t/p/w500${data.poster_path}`,
     genreIds: data.genre_ids,
     overview: data.overview
   }
