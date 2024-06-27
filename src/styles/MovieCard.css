@@ -1,0 +1,44 @@
+.card {
+  width: 200px;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.img-hover {
+	background: #cccccc;
+}
+.img-hover img {
+	opacity: 1;
+	-webkit-transition: .2s ease-in-out;
+	transition: .2s ease-in-out;
+}
+.img-hover:hover img {
+	opacity: .85;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.movie-title {
+  font-weight: bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  margin-top: 7px;
+}
+
+a {
+  color: #dedede;
+  text-decoration: inherit;
+  transition: .2s ease-in-out;
+}
+
+a:hover {
+  color: #FF9330;
+}
