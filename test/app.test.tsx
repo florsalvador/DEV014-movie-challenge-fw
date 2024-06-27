@@ -2,10 +2,10 @@ import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react';
 import App from "../src/components/App.tsx";
 
-describe("App", () => {
-  test("Renders the text 'learn more'", () => {
+describe("App component", () => {
+  test("Renders the title 'BestMovies'", () => {
     render(<App />);
-    const learnText = screen.getByText(/learn more/i);
+    const learnText = screen.getByText(/BestMovies/i);
     expect(learnText).toBeInTheDocument();
   });
 });
