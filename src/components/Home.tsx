@@ -26,7 +26,7 @@ function Home() {
     <>
       <h1>BestMovies</h1>
       {isLoading ? (
-        <p>Cargando...</p>
+        <p>Loading...</p>
       ) : error ? (
         <p>Sorry, this content is not available</p>
       ) : (
