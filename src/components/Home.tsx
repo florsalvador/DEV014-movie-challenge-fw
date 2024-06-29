@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import "../styles/App.css";
 import getMovies from "../services/APIService";
 import MovieList from "./MovieList";
 import Movie from "../models/Movie";
+import "../styles/App.css";
 
 function Home() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -16,7 +16,7 @@ function Home() {
         setIsLoading(false);
       })
       .catch(error => {
-        console.error(error);
+        console.error("Error getting data", error);
         setIsLoading(false);
         setError(true);
       });
@@ -26,9 +26,9 @@ function Home() {
     <>
       <h1>BestMovies</h1>
       {isLoading ? (
-        <p>Loading...</p>
+        <p data-testid="loading-message">Loading...</p>
       ) : error ? (
-        <p>Sorry, this content is not available</p>
+        <p data-testid="error-message">Sorry, this content is not available</p>
       ) : (
         <MovieList movies={movies} />
       )}
