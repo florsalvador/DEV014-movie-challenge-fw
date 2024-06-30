@@ -15,10 +15,13 @@ function getMovies(): Promise<Movie[]> {
   .then(response => {
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
-    } else return response.json()})
+    } else return response.json();
+  })
   .then(data => data.results)
   .then(results => (results).map((ele: MovieData) => formatMovie(ele)))
-  .catch(error => error)
+  .catch(error => {
+    throw error;
+  })
 }
 
 export default getMovies
