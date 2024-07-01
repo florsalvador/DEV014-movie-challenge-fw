@@ -7,8 +7,8 @@ import { transformedData } from "./mockData.ts";
 describe("MovieList component", () => {
   test("Renders movie titles", () => {
     render(<MovieList movies={transformedData} />);
-    const movieTitle1 = screen.getByText(/Inside Out 2/);
-    const movieTitle2 = screen.getByText(/Kingdom of the Planet of the Apes/);
+    const movieTitle1 = screen.getByText(transformedData[0].title);
+    const movieTitle2 = screen.getByText(transformedData[1].title);
     expect(movieTitle1).toBeInTheDocument();
     expect(movieTitle2).toBeInTheDocument();
   })
@@ -16,12 +16,8 @@ describe("MovieList component", () => {
   test("Renders movie images", () => {
     render(<MovieList movies={transformedData} />);
     const movieImages = screen.getAllByRole("img");
-    expect(movieImages.length).toBe(2);
-    // console.log(movieImages)
-    // const movieImg1 = screen.getByRole("img");
-    // const movieImg2 = screen.getByRole("img");
-    // expect(movieImg1).toBeInTheDocument();
-    // expect(movieImg2).toBeInTheDocument();
+    expect(movieImages[0].getAttribute('src')).toBe(transformedData[0].posterPath)
+    expect(movieImages[1].getAttribute('src')).toBe(transformedData[1].posterPath)
   })
 
   test("Renders movie years", () => {
@@ -30,23 +26,10 @@ describe("MovieList component", () => {
     expect(movieYears.length).toBe(2);
   })
 
-  test("Renders an empty div if there are no movies in the array", () => {
+  test("Renders an error message if the movie list is empty", () => {
     const emptyList = [];
-    const { container } = render(<MovieList movies={emptyList} />);
-    expect(container.innerHTML).toBe(`<div class="movie-list"></div>`);
+    render(<MovieList movies={emptyList} />);
+    const errorNoMovies = screen.getByTestId("error-no-movies");
+    expect(errorNoMovies).toBeInTheDocument();
   })
-
-  // test("Renders an error message if the movie list is empty", () => {
-  //   const emptyList = [];
-  //   const { container } = render(<MovieList movies={emptyList} />);
-  //   expect(container.innerHTML).toBe(`<p>Sorry, this content is not available</p>`)
-  //   // console.log(container.innerHTML);
-
-  //   // {movieList.length == 0 ? (
-  //   //   <p>Sorry, this content is not available</p>
-  //   // ) : (
-  //   //   <div className="movie-list">{movieList}</div>
-  //   // )}
-  // })
-
 })

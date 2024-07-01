@@ -12,7 +12,11 @@ function MovieList({ movies }: MovieListProps) {
   );
   return (
     <>
-      <div className="movie-list">{movieList}</div>
+      {movies.length == 0 ? (
+        <p data-testid="error-no-movies">Movies not available</p>
+      ) : (
+        <div className="movie-list">{movieList}</div>
+      )}
     </>
   );
 }
