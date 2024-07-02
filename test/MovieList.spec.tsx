@@ -26,10 +26,9 @@ describe("MovieList component", () => {
     expect(movieYears.length).toBe(2);
   })
 
-  test("Renders an error message if the movie list is empty", () => {
+  test("Renders an empty div if there are no movies in the array", () => {
     const emptyList = [];
-    render(<MovieList movies={emptyList} />);
-    const errorNoMovies = screen.getByTestId("error-no-movies");
-    expect(errorNoMovies).toBeInTheDocument();
+    const { container } = render(<MovieList movies={emptyList} />);
+    expect(container.innerHTML).toBe(`<div class="movie-list"></div>`);
   })
 })
