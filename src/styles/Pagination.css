@@ -1,14 +1,15 @@
 button {
   border: none;
   color: #dedede;
-  width: 35px;
+  min-width: 35px;
+  max-width: max-content;
   height: 35px;
   border-radius: 50%;
   margin: 5px;
   font-weight: bold;
 }
 
-.btn-page {
+.btn-page, .btn-before-after {
   background-color: #0B171D;
 }
 
@@ -16,6 +17,17 @@ button {
   background-color: #FF9330;
 }
 
-button:hover {
+.btn-page:hover {
   cursor: pointer;
+  background-color: #162831;
+}
+
+.btn-current-page:hover {
+  cursor: pointer;
+  background-color: #e37003;
+}
+
+.pagination {
+  width: max-content;
+  margin: 0 auto;
 }
