@@ -7,16 +7,17 @@ interface PaginationProps {
 }
 
 function Pagination({currentPage, totalPages, onSelectPage}: PaginationProps) {
-  const buttonBefore = <button key={"before"} className="btn-page" onClick={() => onSelectPage(currentPage-1)} disabled={currentPage == 1 ? true : false}>{"<"}</button>
+  const buttonBefore = <button key={"before"} className="btn-page" data-testid="before-btn" onClick={() => onSelectPage(currentPage-1)} disabled={currentPage == 1 ? true : false}>{"<"}</button>
+  const buttonFirstPage = <button key={1} className="btn-page" onClick={() => onSelectPage(1)}>{"1"}</button>
   const buttonLastPage = <button key={"last-page"} className="btn-page" onClick={() => onSelectPage(totalPages)}>{totalPages}</button>
-  const buttonAfter = <button key={"after"} className="btn-page" onClick={() => onSelectPage(currentPage+1)} disabled={currentPage == totalPages ? true : false}>{">"}</button>
+  const buttonAfter = <button key={"after"} className="btn-page" data-testid="after-btn" onClick={() => onSelectPage(currentPage+1)} disabled={currentPage == totalPages ? true : false}>{">"}</button>
   
   const buttons = [];
-  const rangeInitial = currentPage <= 2 ? 1 : currentPage - 2;
-  const rangeLast = currentPage <= 1 ? 3 : currentPage;
-  for (let i = rangeInitial; i <= rangeLast + 2; i++) {
+  const rangeFirst = currentPage <= 2 ? 1 : currentPage - 2;
+  const rangeLast = currentPage <= 2 ? 5 : currentPage + 2;
+  for (let i = rangeFirst; i <= rangeLast; i++) {
     if (i == currentPage) { 
-      buttons.push(<button key={i} className="btn-current-page" onClick={() => onSelectPage(i)}>{i}</button>);
+      buttons.push(<button key={i} className="btn-current-page" data-testid="current-page-btn" onClick={() => onSelectPage(i)}>{i}</button>);
     } else if (i < totalPages) {
       buttons.push(<button key={i} className="btn-page" onClick={() => onSelectPage(i)}>{i}</button>);
     }
@@ -29,10 +30,11 @@ function Pagination({currentPage, totalPages, onSelectPage}: PaginationProps) {
     <>
       <div className="pagination">
         {buttonBefore}
-        {rangeInitial !== 1 && moreBefore}
+        {rangeFirst !== 1 && buttonFirstPage}
+        {rangeFirst !== 1 && moreBefore}
         {buttons}
-        {rangeLast < totalPages - 2 && moreAfter}
-        {buttonLastPage}
+        {rangeLast <= totalPages - 2 && moreAfter}
+        {currentPage !== totalPages && buttonLastPage}
         {buttonAfter}
       </div>
     </>
