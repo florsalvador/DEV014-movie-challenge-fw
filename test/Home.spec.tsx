@@ -1,35 +1,38 @@
 import React from "react";
-import { act, useState } from 'react';
-import "@testing-library/jest-dom"
-import { render, screen } from "@testing-library/react"
-import { MemoryRouter } from "react-router-dom";
-import Home from "../src/components/Home.tsx"
-import { response, transformedResults } from "./mockData.ts"
+import "@testing-library/jest-dom";
+import { act } from 'react';
+import { render, screen, waitFor } from "@testing-library/react";
+import { MemoryRouter, /* Routes, Route */ } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
+import Home from "../src/components/Home.tsx";
+import { response, transformedResults } from "./mockData.ts";
 
 jest.mock("../src/utils/getEnv", () => ({
   getToken: () => "faketoken"
 }));
 
-let mockSearchParam = "";
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useSearchParams: () => {
-    const [params, setParams] = useState(new URLSearchParams(mockSearchParam));
-    return [
-      params,
-      (newParams: string) => {
-        mockSearchParam = newParams;
-        setParams(new URLSearchParams(newParams));
-      }
-    ];
-  }
-}));
+// const setSearchParamsMock = jest.fn();
+
+// jest.mock('react-router-dom', () => ({
+//   ...jest.requireActual('react-router-dom'),
+//   useSearchParams: () => [new URLSearchParams(), setSearchParamsMock],
+// }));
 
 const Wrapper = () => {
   return <MemoryRouter>
       <Home />
   </MemoryRouter>
 }
+
+// const Wrapper = () => {
+//   return (
+//     <MemoryRouter initialEntries={['/']}>
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//       </Routes>
+//     </MemoryRouter>
+//   );
+// };
 
 describe("Home component", () => {
   afterEach(() => {
@@ -82,7 +85,7 @@ describe("Home component", () => {
       }),
     ) as jest.Mock;
     await act(async () => {
-      render(<Home />);
+      render(<Wrapper />);
     });
     const errorMsg = screen.getByTestId("error-message");
     expect(errorMsg).toBeInTheDocument();
@@ -104,5 +107,40 @@ describe("Home component", () => {
     expect(currentBtn).toBeInTheDocument();
     expect(beforeBtn).toBeInTheDocument();
     expect(afterBtn).toBeInTheDocument();
+  });
+
+  test("Redirects to the next page when the after button is clicked", async () => {
+    // const getPageParams = () => {
+    //   const searchParams = new URLSearchParams(window.location.search);
+    //   const page = searchParams.get("page");
+    //   return page;
+    // }
+
+    // Object.defineProperty(window, 'location', {
+    //   value: {
+    //     search: '',
+    //   },
+    // });
+
+    global.fetch = jest.fn(() =>
+      Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(response),
+      }),
+    ) as jest.Mock;
+
+    await act(async () => {
+      render(<Wrapper />);
+    });
+
+    const currentBtn = screen.getByTestId("current-page-btn")
+    await userEvent.click(currentBtn)
+    
+    await waitFor(() => {
+      console.log(window.location.search)
+      console.log(window.location.href)
+      // expect(page).toBe(1);
+      // expect(window.location.search).toBe("/?page=1");
+    });
   });
 });
