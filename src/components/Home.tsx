@@ -40,7 +40,7 @@ function Home() {
         <MovieList movies={results.movies} />
         <Pagination 
           currentPage={results.metadata.pagination.currentPage} 
-          totalPages={500} 
+          totalPages={Math.min(results.metadata.pagination.totalPages, 500)} 
           onSelectPage={selectPage} 
         />
       </main>
