@@ -22,9 +22,9 @@ export function formatMovie(data: MovieData, genresNames: Map<number, string>) {
   const movie: Movie = {
     id: data.id,
     title: data.title,
-    year: data.release_date.slice(0, 4),
+    year: !data.release_date ? "" : data.release_date.slice(0, 4),
     posterPath: `https://image.tmdb.org/t/p/w500${data.poster_path}`,
-    genres: data.genre_ids.map((n: number) => genresNames.get(n)) as string[],
+    genres: !data.genre_ids ? [] : data.genre_ids.map((n: number) => genresNames.get(n)) as string[],
     overview: data.overview
   }
   return movie;
