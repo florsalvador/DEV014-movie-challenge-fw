@@ -37,3 +37,16 @@ export function formatGenresToMap(data: Genre[]) {
   });
   return genreMap;
 }
+
+export interface Options {
+  value: string;
+  label: string;
+}
+
+export function formatGenresToOptions(data: Genre[]) {
+  const genreOptions: Options[] = [];
+  data.forEach((el: Genre) => {
+    genreOptions.push({ value: `${el.id}`, label: el.name })
+  })
+  return genreOptions;
+}
