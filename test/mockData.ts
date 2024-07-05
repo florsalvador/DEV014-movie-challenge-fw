@@ -193,8 +193,13 @@ export const transformedData = [
     "id": 1022789,
     "title": "Inside Out 2",
     "year": "2024",
-    "posterPath": "https://image.tmdb.org/t/p/w500/oxxqiyWrnM0XPnBtVe9TgYWnPxT.jpg",
-    "genreIds": [ 16, 10751, 18, 12, 35 ],
+    "posterPath": "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
+    "genres": [
+      "Animation",
+      "Family",
+      "Adventure",
+      "Comedy"
+    ],
     "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone."
   },
   {
@@ -202,7 +207,11 @@ export const transformedData = [
     "title": "Kingdom of the Planet of the Apes",
     "year": "2024",
     "posterPath": "https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
-    "genreIds": [ 878, 12, 28 ],
+    "genres": [
+      "Science Fiction",
+      "Adventure",
+      "Action"
+    ],
     "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike."
   }
 ]
@@ -219,8 +228,13 @@ export const transformedResults = {
       "id": 1022789,
       "title": "Inside Out 2",
       "year": "2024",
-      "posterPath": "https://image.tmdb.org/t/p/w500/oxxqiyWrnM0XPnBtVe9TgYWnPxT.jpg",
-      "genreIds": [ 16, 10751, 18, 12, 35 ],
+      "posterPath": "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
+      "genres": [
+        "Animation",
+        "Family",
+        "Adventure",
+        "Comedy"
+      ],
       "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone."
     },
     {
@@ -228,7 +242,11 @@ export const transformedResults = {
       "title": "Kingdom of the Planet of the Apes",
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
-      "genreIds": [ 878, 12, 28 ],
+      "genres": [
+        "Science Fiction",
+        "Adventure",
+        "Action"
+      ],
       "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike."
     }
   ]

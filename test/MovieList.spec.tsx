@@ -22,7 +22,7 @@ describe("MovieList component", () => {
 
   test("Renders movie years", () => {
     render(<MovieList movies={transformedData} />);
-    const movieYears = screen.getAllByText("2024");
+    const movieYears = screen.getAllByText(/2024/);
     expect(movieYears.length).toBe(2);
   })
 
