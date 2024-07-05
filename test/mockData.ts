@@ -24,8 +24,6 @@ export const data2 = {
   "backdrop_path": "/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg",
   "genre_ids": [
       16,
-      10751,
-      18,
       12,
       35
   ],
@@ -47,7 +45,7 @@ export const movieType = {
   title: "Battle Over Britain",
   year: "2023",
   posterPath: "https://image.tmdb.org/t/p/w500/8htJ7keZTwa08aC9OKyiqaq1cNJ.jpg",
-  genreIds: [ 10752 ],
+  genres: [ "War" ],
   overview: "A young pilot, fresh out of training, is called to join a Flight while they wait for the call to scramble."
 }
 
@@ -56,7 +54,7 @@ export const movieType2 = {
   title: "Inside Out 2",
   year: "2024",
   posterPath: "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
-  genreIds: [ 16, 10751, 18, 12, 35 ],
+  genres: [ "Animation", "Adventure", "Comedy" ],
   overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust."
 }
 
@@ -311,3 +309,54 @@ export const transformedResultsPage2 = {
     }
   ]
 }
+
+
+// MOCK DATA FOR MOVIESERVICE
+
+export const responseGenres = {
+  "genres": [
+    {
+      "id": 28,
+      "name": "Action"
+    },
+    {
+      "id": 12,
+      "name": "Adventure"
+    },
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 35,
+      "name": "Comedy"
+    },
+    {
+      "id": 10752,
+      "name": "War"
+      }    
+  ]
+}
+
+export const resultGenres = [
+  {
+    "id": 28,
+    "name": "Action"
+  },
+  {
+    "id": 12,
+    "name": "Adventure"
+  },
+  {
+    "id": 16,
+    "name": "Animation"
+  },
+  {
+    "id": 35,
+    "name": "Comedy"
+  },
+  {
+    "id": 10752,
+    "name": "War"
+    }  
+]
