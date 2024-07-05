@@ -1,4 +1,5 @@
-import Movie from "../models/Movie"
+import Movie from "../models/Movie";
+import { Genre } from "../services/movieService";
 
 export interface MovieData {
   adult: boolean;
@@ -17,14 +18,22 @@ export interface MovieData {
   vote_count: number;
 }
 
-export function formatMovie(data: MovieData) {
+export function formatMovie(data: MovieData, genresNames: Map<number, string>) {
   const movie: Movie = {
     id: data.id,
     title: data.title,
     year: data.release_date.slice(0, 4),
     posterPath: `https://image.tmdb.org/t/p/w500${data.poster_path}`,
-    genreIds: data.genre_ids,
+    genres: data.genre_ids.map((n: number) => genresNames.get(n)) as string[],
     overview: data.overview
   }
   return movie;
+}
+
+export function formatGenresToMap(data: Genre[]) {
+  const genreMap = new Map();
+  data.map((el: Genre) => {
+      genreMap.set(el.id, el.name);
+  });
+  return genreMap;
 }
