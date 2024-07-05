@@ -21,7 +21,7 @@ function MovieCard({ movie } : MovieCardProps) {
         <a href="#">
           <p className="movie-title">{movie.title || "Title not available"}</p>
         </a>
-        <p>{movie.year || "-"}</p>
+        <p className="year-genres">{movie.year || "-"} &nbsp;•&nbsp; {movie.genres.slice(0, 2).join(", ")}</p>
       </div>
     </>
   )
