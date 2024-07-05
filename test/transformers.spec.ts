@@ -40,4 +40,25 @@ describe("formatMovie", () => {
     const transformedMissingTitle = formatMovie(missingTitle as MovieData, genresMap);
     expect(transformedMissingTitle.title).toBe(undefined);
   });
+
+  test("If genres is missing if it will be an empty arraay", () => {
+    const data = {
+      "adult": false,
+      "backdrop_path": "/11G6N5zW0KykVS0EcNKeXHUmQj8.jpg",
+      "genre_ids": null as unknown as number[],
+      "id": 1136318,
+      "original_language": "en",
+      "original_title": "Battle Over Britain",
+      "overview": "A young pilot, fresh out of training, is called to join a Flight while they wait for the call to scramble.",
+      "popularity": 646.548,
+      "poster_path": "/8htJ7keZTwa08aC9OKyiqaq1cNJ.jpg",
+      "release_date": "2023-12-01",
+      "title": "Battle Over Britain",
+      "video": false,
+      "vote_average": 7.412,
+      "vote_count": 51
+    }
+    const newData = formatMovie(data, genresMap);
+    expect(newData.genres).toEqual([]);
+  });
 });
