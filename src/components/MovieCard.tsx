@@ -12,7 +12,10 @@ function MovieCard({ movie } : MovieCardProps) {
       <div className="card">
         <a href="#">
           <div className="img-hover">
-            <img src={movie.posterPath.includes(".jpg")? movie.posterPath : defaultPoster} alt={movie.title} />
+            <img 
+              src={movie.posterPath.includes("null") || movie.posterPath.includes("undefined") ? defaultPoster : movie.posterPath} 
+              alt={movie.title} 
+            />
           </div>
         </a>
         <a href="#">

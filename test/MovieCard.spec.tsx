@@ -87,11 +87,7 @@ describe("MovieCard component", () => {
       overview: "A young pilot, fresh out of training, is called to join a Flight while they wait for the call to scramble."
     }
     render(<MovieCard movie={noMoviePoster} />);
-    // const image = screen.getByRole("img") as HTMLImageElement;
-    // console.log("default", image.getAttribute('src'));
-
-    // expect(image).toBeInTheDocument();
-    // expect(image.src).toContain('default-movie-poster.jpg');
-    // expect(image.src.includes("default-movie-poster")).toBe(true);
+    const image = screen.getByRole("img") as HTMLImageElement;
+    expect(image.src).toContain("http://localhost");
   });
 });

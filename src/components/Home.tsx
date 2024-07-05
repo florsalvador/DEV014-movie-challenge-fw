@@ -1,37 +1,49 @@
 import { useEffect, useState } from "react";
-import getMovies from "../services/APIService";
+import { useSearchParams } from "react-router-dom";
+import { getMovies, Results } from "../services/APIService";
 import MovieList from "./MovieList";
-import Movie from "../models/Movie";
-import "../styles/App.css";
+import Pagination from "./Pagination";
+import "../styles/Home.css";
 
 function Home() {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [results, setResults] = useState<Results>({metadata: {pagination: {currentPage: 1, totalPages: 1}}, movies: []});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const selectPage = (page: number) => setSearchParams({ page: `${page}`})
 
   useEffect(() => {
-    getMovies()
+    const filters = { page: !searchParams.get("page") ? 1 : Number(searchParams.get("page"))};
+    getMovies({ filters })
       .then(data => {
-        setMovies(data);
+        setResults(data);
         setIsLoading(false);
+        setError(false);
       })
       .catch(error => {
         console.error("Error getting data", error);
         setIsLoading(false);
         setError(true);
       });
-  }, []);
+  }, [searchParams]);
 
   return (
     <>
-      <h1>BestMovies</h1>
-      {isLoading ? (
-        <p data-testid="loading-message">Loading...</p>
-      ) : error ? (
-        <p data-testid="error-message">Sorry, this content is not available</p>
-      ) : (
-        <MovieList movies={movies} />
-      )}
+      <header>
+        <div className="div-title"><h1>BestMovies 🎬</h1></div>
+      </header>
+      <main>
+        <h3>Trending</h3>
+        {isLoading && <p data-testid="loading-message">Loading...</p>}
+        {error && <p data-testid="error-message">Sorry, this content is not available</p>}
+        <MovieList movies={results.movies} />
+        <Pagination 
+          currentPage={results.metadata.pagination.currentPage} 
+          totalPages={Math.min(results.metadata.pagination.totalPages, 500)} 
+          onSelectPage={selectPage} 
+        />
+      </main>
     </>
   )
 }
