@@ -2,9 +2,11 @@ import { formatMovie, MovieData } from "../utils/transformers";
 import Movie from "../models/Movie";
 import { getToken } from "../utils/getEnv";
 
-interface ApiFilters { 
+interface Filters { 
   filters: { 
-    page: number
+    page: number, 
+    genreId: number | null, 
+    sortBy: string | null 
   }
 }
 
@@ -18,8 +20,9 @@ export interface Results {
   movies: Movie[]
 }
 
-export function getMovies({ filters }: ApiFilters = { filters: { page: 1 } }): Promise<Results> {
-  const url = `https://api.themoviedb.org/3/discover/movie?page=${filters.page}`;
+export function getMovies({ filters }: Filters = {filters: {page: 1, genreId: null, sortBy: null}}, genres: Map<number, string>): Promise<Results> {
+  const sort = filters.sortBy ? `&sort_by=${filters.sortBy}` : "";
+  const url = `https://api.themoviedb.org/3/discover/movie?page=${filters.page}${sort}`;
   const token = getToken();
   const request: RequestInit = {
     headers: {
@@ -27,24 +30,31 @@ export function getMovies({ filters }: ApiFilters = { filters: { page: 1 } }): P
     }
   }
   return fetch(url, request)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`${response.status}`);
-    } else return response.json();
-  })
-  .then(data => {
-    const dataResults: Results = {
-      metadata: {
-        pagination: {
-          currentPage: data.page,
-          totalPages: data.total_pages
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`${response.status}`);
+      } else return response.json();
+    })
+    .then(data => {
+      const filterData = (results: MovieData[]) => {
+        let filteredMovies = results;
+        if (filters.genreId) {
+          filteredMovies = results.filter((m) => m.genre_ids.includes(filters.genreId as number))
         }
-      },
-      movies: data.results.map((ele: MovieData) => formatMovie(ele))
-    };
-    return dataResults;
-  })
-  .catch(error => {
-    throw error;
-  })
+        return filteredMovies.map((m) => formatMovie(m, genres))
+      };
+      const dataResults: Results = {
+        metadata: {
+          pagination: {
+            currentPage: data.page,
+            totalPages: data.total_pages
+          }
+        },
+        movies: filterData(data.results)
+      };
+      return dataResults;
+    })
+    .catch(error => {
+      throw error;
+    })
 }
