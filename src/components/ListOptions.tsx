@@ -1,4 +1,4 @@
-import "../styles/ListOptions.css";
+// import "../styles/ListOptions.css";
 
 interface ListOptionsProps {
   selectType: string,
@@ -10,12 +10,12 @@ interface ListOptionsProps {
 
 function ListOptions({selectType, options, selectedOption, onChange, onClear}: ListOptionsProps) {
   const optionElements = options.map(option => 
-    <option key={option.value} value={option.value}>{option.label}</option>
+    <option data-testid={option.value} key={option.value} value={option.value}>{option.label}</option>
   );
   return (
     <>
       <form>
-        <select name="filter" id="filter-by-genre" defaultValue={selectedOption?.value} onChange={e => onChange(e.target.value)}>
+        <select name="select" data-testid="select" defaultValue={selectedOption?.value} onChange={e => onChange(e.target.value)}>
           <option value="">{selectType}</option>
           {optionElements}
         </select>
