@@ -146,8 +146,6 @@ export const response = {
         "backdrop_path": "/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg",
         "genre_ids": [
             16,
-            10751,
-            18,
             12,
             35
         ],
@@ -167,7 +165,6 @@ export const response = {
         "adult": false,
         "backdrop_path": "/fqv8v6AycXKsivp1T5yKtLbGXce.jpg",
         "genre_ids": [
-            878,
             12,
             28
         ],
@@ -228,10 +225,9 @@ export const transformedResults = {
       "id": 1022789,
       "title": "Inside Out 2",
       "year": "2024",
-      "posterPath": "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
+      "posterPath": "https://image.tmdb.org/t/p/w500/oxxqiyWrnM0XPnBtVe9TgYWnPxT.jpg",
       "genres": [
         "Animation",
-        "Family",
         "Adventure",
         "Comedy"
       ],
@@ -243,7 +239,6 @@ export const transformedResults = {
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
       "genres": [
-        "Science Fiction",
         "Adventure",
         "Action"
       ],
@@ -259,7 +254,6 @@ export const responsePage2 = {
       "adult": false,
       "backdrop_path": "/3TNSoa0UHGEzEz5ndXGjJVKo8RJ.jpg",
       "genre_ids": [
-        878,
         28
       ],
       "id": 614933,
@@ -281,8 +275,7 @@ export const responsePage2 = {
         16,
         28,
         12,
-        35,
-        10751
+        35
       ],
       "id": 1280768,
       "original_language": "en",
@@ -314,7 +307,7 @@ export const transformedResultsPage2 = {
       "title": "Atlas",
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/bcM2Tl5HlsvPBnL8DKP9Ie6vU4r.jpg",
-      "genreIds": [ 878, 28 ],
+      "genres": [ "Action" ],
       "overview": "A brilliant counterterrorism analyst with a deep distrust of AI discovers it might be her only hope when a mission to capture a renegade robot goes awry."
     },
     {
@@ -322,7 +315,7 @@ export const transformedResultsPage2 = {
       "title": "No Time to Spy: A Loud House Movie",
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/mh4Mk95u7fdY4D4t5kRGQpQbVFy.jpg",
-      "genreIds": [ 16, 28, 12, 35, 10751 ],
+      "genres": [ "Animation", "Action", "Adventure", "Comedy" ],
       "overview": "Lincoln and the Louds are ecstatic to welcome their new Gran-Gran, Myrtle, into the family with a tropical wedding celebration."
     }
   ]
