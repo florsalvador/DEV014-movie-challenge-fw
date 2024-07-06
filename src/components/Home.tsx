@@ -8,23 +8,18 @@ import MovieList from "./MovieList";
 import Pagination from "./Pagination";
 import "../styles/Home.css";
 
-const genres = await getMovieGenres();
-
 function Home() {
   const [results, setResults] = useState<Results>({metadata: {pagination: {currentPage: 1, totalPages: 1}}, movies: []});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [genres, setGenres] = useState<{id: number, name: string}[]>([]);
 
-  const selectPage = (page: number) => {
-    const newSearchParams = { page: `${page}`}
-    setSearchParams((prevParams) => {
-      return new URLSearchParams({
-        ...Object.fromEntries(prevParams.entries()),
-        ...newSearchParams,
-      });
-    });
-  };
+  useEffect(() => {
+    getMovieGenres()
+    .then(data => setGenres(data))
+    .catch(error => console.error("Error getting genres", error))
+  }, []);
 
   const optionsFilter = formatGenresToOptions(genres);
   const selectFilter = (id: string) => {
@@ -66,6 +61,16 @@ function Home() {
     })
   }
 
+  const selectPage = (page: number) => {
+    const newSearchParams = { page: `${page}`}
+    setSearchParams((prevParams) => {
+      return new URLSearchParams({
+        ...Object.fromEntries(prevParams.entries()),
+        ...newSearchParams,
+      });
+    });
+  };
+
   useEffect(() => {
     const filters = {
       page: !searchParams.get("page") ? 1 : Number(searchParams.get("page")),
@@ -84,7 +89,7 @@ function Home() {
         setIsLoading(false);
         setError(true);
       });
-  }, [searchParams]);
+  }, [genres, searchParams]);
 
   const findLabel = (opt: string, listSelect: { value: string, label: string }[]) => {
     const option = listSelect.find(({ value }) => value === opt);
