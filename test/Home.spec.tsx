@@ -1,11 +1,11 @@
 import React from "react";
 import "@testing-library/jest-dom";
 import { act } from 'react';
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { MemoryRouter, /* Routes, Route */ } from "react-router-dom";
-import userEvent from "@testing-library/user-event";
+// import userEvent from "@testing-library/user-event";
 import Home from "../src/components/Home.tsx";
-import { response, transformedResults } from "./mockData.ts";
+import { response, transformedResults, responseGenres } from "./mockData.ts";
 
 jest.mock("../src/utils/getEnv", () => ({
   getToken: () => "faketoken"
@@ -24,28 +24,26 @@ const Wrapper = () => {
   </MemoryRouter>
 }
 
-// const Wrapper = () => {
-//   return (
-//     <MemoryRouter initialEntries={['/']}>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//       </Routes>
-//     </MemoryRouter>
-//   );
-// };
-
 describe("Home component", () => {
   afterEach(() => {
     jest.restoreAllMocks();
   })
 
   test("Renders movie titles and images", async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(response),
-      }),
-    ) as jest.Mock;
+    global.fetch = jest.fn((url: string) => {
+      if (url.includes("genre/movie/list")) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(responseGenres),
+        })
+      } else if (url.includes("discover/movie")) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(response),
+        })
+      }
+      return Promise.reject(new Error("Unknown URL"));
+    }) as jest.Mock;
     await act(async () => {
       render(<Wrapper />);
     });
@@ -59,16 +57,24 @@ describe("Home component", () => {
 
   test("Renders loading message", async () => {
     jest.useFakeTimers();
-    global.fetch = jest.fn(() =>
-      new Promise(resolve =>
-        setTimeout(() =>
-          resolve({
-            ok: true,
-            json: () => Promise.resolve(response),
-          }),
-        1000)
-      )
-    ) as jest.Mock;
+    global.fetch = jest.fn((url: string) => {
+      if (url.includes("genre/movie/list")) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(responseGenres),
+        })
+      } else if (url.includes("discover/movie")) {
+        return new Promise(resolve =>
+          setTimeout(() =>
+            resolve({
+              ok: true,
+              json: () => Promise.resolve(response),
+            }),
+          1000)
+        )
+      }
+      return Promise.reject(new Error("Unknown URL"));
+    }) as jest.Mock;
     await act(async () => {
       render(<Wrapper />);
     });
@@ -77,13 +83,22 @@ describe("Home component", () => {
   });
 
   test("Renders error message if the API request fails", async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        ok: false,
-        status: 401,
-        json: () => Promise.resolve({ message: "error"}),
-      }),
-    ) as jest.Mock;
+    global.fetch = jest.fn((url: string) => {
+      if (url.includes("genre/movie/list")) {
+        return Promise.resolve({
+          ok: false,
+          status: 401,
+          json: () => Promise.resolve({ message: "error"}),
+        })
+      } else if (url.includes("discover/movie")) {
+        return Promise.resolve({
+          ok: false,
+          status: 401,
+          json: () => Promise.resolve({ message: "error"}),
+        })
+      }
+      return Promise.reject(new Error("Unknown URL"));
+    }) as jest.Mock;
     await act(async () => {
       render(<Wrapper />);
     });
@@ -92,12 +107,20 @@ describe("Home component", () => {
   });
 
   test("Renders pagination buttons", async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(response),
-      }),
-    ) as jest.Mock;
+    global.fetch = jest.fn((url: string) => {
+      if (url.includes("genre/movie/list")) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(responseGenres),
+        })
+      } else if (url.includes("discover/movie")) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(response),
+        })
+      }
+      return Promise.reject(new Error("Unknown URL"));
+    }) as jest.Mock;
     await act(async () => {
       render(<Wrapper />);
     });
@@ -110,37 +133,52 @@ describe("Home component", () => {
   });
 
   test("Redirects to the next page when the after button is clicked", async () => {
-    // const getPageParams = () => {
-    //   const searchParams = new URLSearchParams(window.location.search);
-    //   const page = searchParams.get("page");
-    //   return page;
-    // }
-
-    // Object.defineProperty(window, 'location', {
-    //   value: {
-    //     search: '',
-    //   },
-    // });
-
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(response),
-      }),
-    ) as jest.Mock;
+    global.fetch = jest.fn((url: string) => {
+      if (url.includes("genre/movie/list")) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(responseGenres),
+        })
+      } else if (url.includes("discover/movie")) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(response),
+        })
+      }
+      return Promise.reject(new Error("Unknown URL"));
+    }) as jest.Mock;
 
     await act(async () => {
       render(<Wrapper />);
     });
 
-    const currentBtn = screen.getByTestId("current-page-btn")
-    await userEvent.click(currentBtn)
-    
+    const afterBtn = screen.getByTestId("after-btn")
+    // await userEvent.click(afterBtn)
+    fireEvent.click(afterBtn);
+
+    // expect(window.location.search).toBe("?page=2");
+
+    // const mockSearchParams = new URLSearchParams();
+    // mockSearchParams.set("page", "2");
+
+    // jest.mock('react-router-dom', () => ({
+    //   ...jest.requireActual('react-router-dom'),
+    //   useSearchParams: () => [mockSearchParams]
+    // }));
+
+    // expect(mockSetSearchParams).toHaveBeenCalledWith({}, "", "/?page=2");
+    // window.history.pushState = originalSetSearchParams;
+
+    // await waitFor(() => {
+    //   const searchParams = new URLSearchParams(window.location.search);
+    //   // console.log(searchParams);
+    //   expect(searchParams.get("page")).toBe("2");
+    // });
     await waitFor(() => {
       console.log(window.location.search)
       console.log(window.location.href)
-      // expect(page).toBe(1);
-      // expect(window.location.search).toBe("/?page=1");
+      // expect(window.location.search).toBe("/?page=2");
     });
   });
+
 });
