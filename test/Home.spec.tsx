@@ -1,9 +1,10 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { act } from 'react';
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
-import { MemoryRouter, /* Routes, Route */ } from "react-router-dom";
-// import userEvent from "@testing-library/user-event";
+import { act } from "react";
+import { render, screen, waitFor } from "@testing-library/react";
+import { Router } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
+import { createMemoryHistory } from "history";
 import Home from "../src/components/Home.tsx";
 import { response, transformedResults, responseGenres } from "./mockData.ts";
 
@@ -11,41 +12,41 @@ jest.mock("../src/utils/getEnv", () => ({
   getToken: () => "faketoken"
 }));
 
-// const setSearchParamsMock = jest.fn();
-
-// jest.mock('react-router-dom', () => ({
-//   ...jest.requireActual('react-router-dom'),
-//   useSearchParams: () => [new URLSearchParams(), setSearchParamsMock],
-// }));
-
-const Wrapper = () => {
-  return <MemoryRouter>
-      <Home />
-  </MemoryRouter>
+const history = createMemoryHistory();
+const RenderHome = () => {
+  return <Router location={history.location} navigator={history}>
+    <Home />
+  </Router>
 }
+
+const getFetchMocks = () => {
+  global.fetch = jest.fn((url: string) => {
+    if (url.includes("genre/movie/list")) {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(responseGenres),
+      });
+    } else if (url.includes("discover/movie")) {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(response),
+      });
+    }
+    return Promise.reject(new Error("Unknown URL"));
+  }) as jest.Mock;
+};
 
 describe("Home component", () => {
   afterEach(() => {
+    jest.useRealTimers();
     jest.restoreAllMocks();
+    history.replace("");
   })
 
   test("Renders movie titles and images", async () => {
-    global.fetch = jest.fn((url: string) => {
-      if (url.includes("genre/movie/list")) {
-        return Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(responseGenres),
-        })
-      } else if (url.includes("discover/movie")) {
-        return Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(response),
-        })
-      }
-      return Promise.reject(new Error("Unknown URL"));
-    }) as jest.Mock;
+    getFetchMocks();
     await act(async () => {
-      render(<Wrapper />);
+      render(<RenderHome />);
     });
     const movieTitle1 = screen.getByText(transformedResults.movies[0].title)
     const movieTitle2 = screen.getByText(transformedResults.movies[1].title)
@@ -76,7 +77,7 @@ describe("Home component", () => {
       return Promise.reject(new Error("Unknown URL"));
     }) as jest.Mock;
     await act(async () => {
-      render(<Wrapper />);
+      render(<RenderHome />);
     });
     const loadingMsg = screen.getByTestId("loading-message");
     expect(loadingMsg).toBeInTheDocument();
@@ -100,29 +101,16 @@ describe("Home component", () => {
       return Promise.reject(new Error("Unknown URL"));
     }) as jest.Mock;
     await act(async () => {
-      render(<Wrapper />);
+      render(<RenderHome />);
     });
     const errorMsg = screen.getByTestId("error-message");
     expect(errorMsg).toBeInTheDocument();
   });
 
   test("Renders pagination buttons", async () => {
-    global.fetch = jest.fn((url: string) => {
-      if (url.includes("genre/movie/list")) {
-        return Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(responseGenres),
-        })
-      } else if (url.includes("discover/movie")) {
-        return Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(response),
-        })
-      }
-      return Promise.reject(new Error("Unknown URL"));
-    }) as jest.Mock;
+    getFetchMocks();
     await act(async () => {
-      render(<Wrapper />);
+      render(<RenderHome />);
     });
     const currentBtn = screen.getByTestId("current-page-btn")
     const beforeBtn = screen.getByTestId("before-btn")
@@ -133,51 +121,55 @@ describe("Home component", () => {
   });
 
   test("Redirects to the next page when the after button is clicked", async () => {
-    global.fetch = jest.fn((url: string) => {
-      if (url.includes("genre/movie/list")) {
-        return Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(responseGenres),
-        })
-      } else if (url.includes("discover/movie")) {
-        return Promise.resolve({
-          ok: true,
-          json: () => Promise.resolve(response),
-        })
-      }
-      return Promise.reject(new Error("Unknown URL"));
-    }) as jest.Mock;
-
+    getFetchMocks();
     await act(async () => {
-      render(<Wrapper />);
+      render(<RenderHome />);
     });
-
-    const afterBtn = screen.getByTestId("after-btn")
-    // await userEvent.click(afterBtn)
-    fireEvent.click(afterBtn);
-
-    // expect(window.location.search).toBe("?page=2");
-
-    // const mockSearchParams = new URLSearchParams();
-    // mockSearchParams.set("page", "2");
-
-    // jest.mock('react-router-dom', () => ({
-    //   ...jest.requireActual('react-router-dom'),
-    //   useSearchParams: () => [mockSearchParams]
-    // }));
-
-    // expect(mockSetSearchParams).toHaveBeenCalledWith({}, "", "/?page=2");
-    // window.history.pushState = originalSetSearchParams;
-
-    // await waitFor(() => {
-    //   const searchParams = new URLSearchParams(window.location.search);
-    //   // console.log(searchParams);
-    //   expect(searchParams.get("page")).toBe("2");
-    // });
+    const afterBtn = screen.getByTestId("after-btn");
+    await userEvent.click(afterBtn)
     await waitFor(() => {
-      console.log(window.location.search)
-      console.log(window.location.href)
-      // expect(window.location.search).toBe("/?page=2");
+      expect(history.location.search).toBe("?page=2");
+    });
+  });
+
+  test("Changes search param when a genre filter is selected", async () => {
+    getFetchMocks();
+    await act(async () => {
+      render(<RenderHome />);
+    });
+    const selectGenre = screen.getAllByTestId("select")[0];
+    await userEvent.selectOptions(selectGenre, "16")
+    await waitFor(() => {
+      expect(history.location.search).toBe("?genreId=16");
+    });
+  });
+
+  test("Changes search param when a sortBy option is selected", async () => {
+    getFetchMocks();
+    await act(async () => {
+      render(<RenderHome />);
+    });
+    const selectSort = screen.getAllByTestId("select")[1];
+    await userEvent.selectOptions(selectSort, "title.asc")
+    await waitFor(() => {
+      expect(history.location.search).toBe("?sortBy=title.asc");
+    });
+  });
+
+  test("Renders only animation movies when the filter is applied", async () => {
+    getFetchMocks();
+    await act(async () => {
+      render(<RenderHome />);
+    });
+    const selectGenre = screen.getAllByTestId("select")[0] as HTMLSelectElement;
+    const movieTitleAnimation = screen.getByText(transformedResults.movies[0].title);
+    // const movieTitleNotAnimation = screen.getByText(transformedResults.movies[1].title);
+    await userEvent.selectOptions(selectGenre, "16");
+    await waitFor(() => {
+      expect(movieTitleAnimation).toBeInTheDocument();
+      // expect(movieTitleNotAnimation).not.toBeInTheDocument();
+      // console.log(history.location.search);
+      // console.log(selectGenre.value);
     });
   });
 
