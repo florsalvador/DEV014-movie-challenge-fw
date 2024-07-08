@@ -1,4 +1,4 @@
-// import "../styles/ListOptions.css";
+import "../styles/ListOptions.css";
 
 interface ListOptionsProps {
   selectType: string,
@@ -19,7 +19,7 @@ function ListOptions({selectType, options, selectedOption, onChange, onClear}: L
           <option value="">{selectType}</option>
           {optionElements}
         </select>
-        <button type="reset" onClick={() => onClear()}>Clear</button>
+        <button title="Clear selection" className="button-clear-select" type="reset" onClick={() => onClear()}>&#8635;</button>
       </form>
     </>
   )
