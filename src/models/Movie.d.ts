@@ -3,7 +3,7 @@ type Movie = {
   title: string;
   year: string;
   posterPath: string;
-  genreIds: number[];
+  genres: string[];
   overview: string
 }
 

@@ -20,21 +20,27 @@ img {
 }
 
 p {
-  margin: 5px 0;
-  font-size: 13px;
-}
-
-.movie-title {
-  font-weight: bold;
+  margin: 0;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   max-width: 100%;
+  font-size: 13px;
+}
+
+.movie-title {
   margin-top: 7px;
+  font-weight: bold;
+}
+
+.year-genres {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #c5c5c5
 }
 
 a {
-  color: #dedede;
+  color: #e7e7e7;
   text-decoration: inherit;
   transition: .2s ease-in-out;
 }

@@ -24,8 +24,6 @@ export const data2 = {
   "backdrop_path": "/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg",
   "genre_ids": [
       16,
-      10751,
-      18,
       12,
       35
   ],
@@ -47,7 +45,7 @@ export const movieType = {
   title: "Battle Over Britain",
   year: "2023",
   posterPath: "https://image.tmdb.org/t/p/w500/8htJ7keZTwa08aC9OKyiqaq1cNJ.jpg",
-  genreIds: [ 10752 ],
+  genres: [ "War" ],
   overview: "A young pilot, fresh out of training, is called to join a Flight while they wait for the call to scramble."
 }
 
@@ -56,7 +54,7 @@ export const movieType2 = {
   title: "Inside Out 2",
   year: "2024",
   posterPath: "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
-  genreIds: [ 16, 10751, 18, 12, 35 ],
+  genres: [ "Animation", "Adventure", "Comedy" ],
   overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust."
 }
 
@@ -148,8 +146,6 @@ export const response = {
         "backdrop_path": "/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg",
         "genre_ids": [
             16,
-            10751,
-            18,
             12,
             35
         ],
@@ -169,7 +165,6 @@ export const response = {
         "adult": false,
         "backdrop_path": "/fqv8v6AycXKsivp1T5yKtLbGXce.jpg",
         "genre_ids": [
-            878,
             12,
             28
         ],
@@ -195,8 +190,13 @@ export const transformedData = [
     "id": 1022789,
     "title": "Inside Out 2",
     "year": "2024",
-    "posterPath": "https://image.tmdb.org/t/p/w500/oxxqiyWrnM0XPnBtVe9TgYWnPxT.jpg",
-    "genreIds": [ 16, 10751, 18, 12, 35 ],
+    "posterPath": "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
+    "genres": [
+      "Animation",
+      "Family",
+      "Adventure",
+      "Comedy"
+    ],
     "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone."
   },
   {
@@ -204,7 +204,11 @@ export const transformedData = [
     "title": "Kingdom of the Planet of the Apes",
     "year": "2024",
     "posterPath": "https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
-    "genreIds": [ 878, 12, 28 ],
+    "genres": [
+      "Science Fiction",
+      "Adventure",
+      "Action"
+    ],
     "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike."
   }
 ]
@@ -222,7 +226,11 @@ export const transformedResults = {
       "title": "Inside Out 2",
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/oxxqiyWrnM0XPnBtVe9TgYWnPxT.jpg",
-      "genreIds": [ 16, 10751, 18, 12, 35 ],
+      "genres": [
+        "Animation",
+        "Adventure",
+        "Comedy"
+      ],
       "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone."
     },
     {
@@ -230,7 +238,10 @@ export const transformedResults = {
       "title": "Kingdom of the Planet of the Apes",
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/gKkl37BQuKTanygYQG1pyYgLVgf.jpg",
-      "genreIds": [ 878, 12, 28 ],
+      "genres": [
+        "Adventure",
+        "Action"
+      ],
       "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike."
     }
   ]
@@ -243,7 +254,6 @@ export const responsePage2 = {
       "adult": false,
       "backdrop_path": "/3TNSoa0UHGEzEz5ndXGjJVKo8RJ.jpg",
       "genre_ids": [
-        878,
         28
       ],
       "id": 614933,
@@ -265,8 +275,7 @@ export const responsePage2 = {
         16,
         28,
         12,
-        35,
-        10751
+        35
       ],
       "id": 1280768,
       "original_language": "en",
@@ -298,7 +307,7 @@ export const transformedResultsPage2 = {
       "title": "Atlas",
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/bcM2Tl5HlsvPBnL8DKP9Ie6vU4r.jpg",
-      "genreIds": [ 878, 28 ],
+      "genres": [ "Action" ],
       "overview": "A brilliant counterterrorism analyst with a deep distrust of AI discovers it might be her only hope when a mission to capture a renegade robot goes awry."
     },
     {
@@ -306,8 +315,59 @@ export const transformedResultsPage2 = {
       "title": "No Time to Spy: A Loud House Movie",
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/mh4Mk95u7fdY4D4t5kRGQpQbVFy.jpg",
-      "genreIds": [ 16, 28, 12, 35, 10751 ],
+      "genres": [ "Animation", "Action", "Adventure", "Comedy" ],
       "overview": "Lincoln and the Louds are ecstatic to welcome their new Gran-Gran, Myrtle, into the family with a tropical wedding celebration."
     }
   ]
 }
+
+
+// MOCK DATA FOR MOVIESERVICE
+
+export const responseGenres = {
+  "genres": [
+    {
+      "id": 28,
+      "name": "Action"
+    },
+    {
+      "id": 12,
+      "name": "Adventure"
+    },
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 35,
+      "name": "Comedy"
+    },
+    {
+      "id": 10752,
+      "name": "War"
+      }    
+  ]
+}
+
+export const resultGenres = [
+  {
+    "id": 28,
+    "name": "Action"
+  },
+  {
+    "id": 12,
+    "name": "Adventure"
+  },
+  {
+    "id": 16,
+    "name": "Animation"
+  },
+  {
+    "id": 35,
+    "name": "Comedy"
+  },
+  {
+    "id": 10752,
+    "name": "War"
+    }  
+]
