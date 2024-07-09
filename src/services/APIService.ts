@@ -21,8 +21,9 @@ export interface Results {
 }
 
 export function getMovies({ filters }: Filters = {filters: {page: 1, genreId: null, sortBy: null}}, genres: Map<number, string>): Promise<Results> {
+  const filter = filters.genreId ? `&with_genres=${filters.genreId}` : "";
   const sort = filters.sortBy ? `&sort_by=${filters.sortBy}` : "";
-  const url = `https://api.themoviedb.org/3/discover/movie?page=${filters.page}${sort}`;
+  const url = `https://api.themoviedb.org/3/discover/movie?page=${filters.page}${filter}${sort}`;
   const token = getToken();
   const request: RequestInit = {
     headers: {
@@ -36,13 +37,6 @@ export function getMovies({ filters }: Filters = {filters: {page: 1, genreId: nu
       } else return response.json();
     })
     .then(data => {
-      const filterData = (results: MovieData[]) => {
-        let filteredMovies = results;
-        if (filters.genreId) {
-          filteredMovies = results.filter((m) => m.genre_ids.includes(filters.genreId as number))
-        }
-        return filteredMovies.map((m) => formatMovie(m, genres))
-      };
       const dataResults: Results = {
         metadata: {
           pagination: {
@@ -50,7 +44,7 @@ export function getMovies({ filters }: Filters = {filters: {page: 1, genreId: nu
             totalPages: data.total_pages
           }
         },
-        movies: filterData(data.results)
+        movies: data.results.map((ele: MovieData) => formatMovie(ele, genres))
       };
       return dataResults;
     })
