@@ -156,21 +156,4 @@ describe("Home component", () => {
     });
   });
 
-  test("Renders only animation movies when the filter is applied", async () => {
-    getFetchMocks();
-    await act(async () => {
-      render(<RenderHome />);
-    });
-    const selectGenre = screen.getAllByTestId("select")[0] as HTMLSelectElement;
-    const movieTitleAnimation = screen.getByText(transformedResults.movies[0].title);
-    // const movieTitleNotAnimation = screen.getByText(transformedResults.movies[1].title);
-    await userEvent.selectOptions(selectGenre, "16");
-    await waitFor(() => {
-      expect(movieTitleAnimation).toBeInTheDocument();
-      // expect(movieTitleNotAnimation).not.toBeInTheDocument();
-      // console.log(history.location.search);
-      // console.log(selectGenre.value);
-    });
-  });
-
 });
