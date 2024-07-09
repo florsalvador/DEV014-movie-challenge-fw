@@ -46,7 +46,9 @@ export const movieType = {
   year: "2023",
   posterPath: "https://image.tmdb.org/t/p/w500/8htJ7keZTwa08aC9OKyiqaq1cNJ.jpg",
   genres: [ "War" ],
-  overview: "A young pilot, fresh out of training, is called to join a Flight while they wait for the call to scramble."
+  overview: "A young pilot, fresh out of training, is called to join a Flight while they wait for the call to scramble.",
+  voteAverage: 7.412,
+  voteCount: 51,
 }
 
 export const movieType2 = {
@@ -55,7 +57,9 @@ export const movieType2 = {
   year: "2024",
   posterPath: "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
   genres: [ "Animation", "Adventure", "Comedy" ],
-  overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust."
+  overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust.",
+  voteAverage: 7.907,
+  voteCount: 420,
 }
 
 // id: wrong data type
@@ -231,7 +235,9 @@ export const transformedResults = {
         "Adventure",
         "Comedy"
       ],
-      "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone."
+      "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+      "voteAverage": 7.907,
+      "voteCount": 420,
     },
     {
       "id": 653346,
@@ -242,7 +248,9 @@ export const transformedResults = {
         "Adventure",
         "Action"
       ],
-      "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike."
+      "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike.",
+      "voteAverage": 6.879,
+      "voteCount": 1150,
     }
   ]
 }
@@ -308,7 +316,9 @@ export const transformedResultsPage2 = {
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/bcM2Tl5HlsvPBnL8DKP9Ie6vU4r.jpg",
       "genres": [ "Action" ],
-      "overview": "A brilliant counterterrorism analyst with a deep distrust of AI discovers it might be her only hope when a mission to capture a renegade robot goes awry."
+      "overview": "A brilliant counterterrorism analyst with a deep distrust of AI discovers it might be her only hope when a mission to capture a renegade robot goes awry.",
+      "voteAverage": 6.846,
+      "voteCount": 925,
     },
     {
       "id": 1280768,
@@ -316,7 +326,9 @@ export const transformedResultsPage2 = {
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/mh4Mk95u7fdY4D4t5kRGQpQbVFy.jpg",
       "genres": [ "Animation", "Action", "Adventure", "Comedy" ],
-      "overview": "Lincoln and the Louds are ecstatic to welcome their new Gran-Gran, Myrtle, into the family with a tropical wedding celebration."
+      "overview": "Lincoln and the Louds are ecstatic to welcome their new Gran-Gran, Myrtle, into the family with a tropical wedding celebration.",
+      "voteAverage": 5.8,
+      "voteCount": 12,
     }
   ]
 }

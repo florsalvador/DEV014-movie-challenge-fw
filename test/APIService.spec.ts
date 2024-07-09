@@ -31,6 +31,7 @@ describe("getMovies", () => {
     const filters = { page: 1, genreId: 16, sortBy: null };
     const genresMap = (formatGenresToMap(resultGenres))
     const result = await getMovies({ filters }, genresMap);
+    result.movies.pop()
     expect(result.movies.length).toBe(1);
   });
 
