@@ -25,7 +25,9 @@ export function formatMovie(data: MovieData, genresNames: Map<number, string>) {
     year: !data.release_date ? "" : data.release_date.slice(0, 4),
     posterPath: `https://image.tmdb.org/t/p/w500${data.poster_path}`,
     genres: !data.genre_ids ? [] : data.genre_ids.map((n: number) => genresNames.get(n)) as string[],
-    overview: data.overview
+    overview: data.overview,
+    voteAverage: data.vote_average,
+    voteCount: data.vote_count
   }
   return movie;
 }
