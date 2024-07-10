@@ -99,7 +99,7 @@ function Home() {
   return (
     <>
       <header>
-        <div className="div-title"><h1>BestMovies 🎬</h1></div>
+        <div className="div-title"><a href="/"><h1>BestMovies 🎬</h1></a></div>
       </header>
       <nav>
         <h3>
@@ -125,14 +125,12 @@ function Home() {
         </div>
       </nav>
       <main>
-        {isLoading && <p data-testid="loading-message">Loading...</p>}
-        {error && <p data-testid="error-message">Sorry, this content is not available</p>}
-        <MovieList movies={results.movies} />
-        <Pagination 
-          currentPage={results.metadata.pagination.currentPage} 
-          totalPages={Math.min(results.metadata.pagination.totalPages, 500)} 
-          onSelectPage={selectPage} 
-        />
+        {isLoading && <div className="loader-error-div"><div className="loader" data-testid="loader"></div></div>}
+        {error && <div className="loader-error-div"><p className="error" data-testid="error-message">Movies not available</p></div>}
+        {!isLoading && !error && <><MovieList movies={results.movies} /><Pagination
+          currentPage={results.metadata.pagination.currentPage}
+          totalPages={Math.min(results.metadata.pagination.totalPages, 500)}
+          onSelectPage={selectPage} /></>}
       </main>
     </>
   )
