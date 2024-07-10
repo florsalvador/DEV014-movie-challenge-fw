@@ -79,8 +79,8 @@ describe("Home component", () => {
     await act(async () => {
       render(<RenderHome />);
     });
-    const loadingMsg = screen.getByTestId("loading-message");
-    expect(loadingMsg).toBeInTheDocument();
+    const loader = screen.getByTestId("loader");
+    expect(loader).toBeInTheDocument();
   });
 
   test("Renders error message if the API request fails", async () => {
