@@ -15,7 +15,7 @@ function ListOptions({selectType, options, selectedOption, onChange, onClear}: L
   return (
     <>
       <form>
-        <select name="select" data-testid="select" value={selectedOption ? selectedOption.value : ""} onChange={e => onChange(e.target.value)}>
+        <select name="select" data-testid="select" value={selectedOption?.value} onChange={e => onChange(e.target.value)}>
           <option value="">{selectType}</option>
           {optionElements}
         </select>
