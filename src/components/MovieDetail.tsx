@@ -31,10 +31,10 @@ function MovieDetail() {
     backgroundPosition: "right 0% top 0%",
   };
 
-  const voteAverage = Math.round(movie.voteAverage/2);
+  const score = Math.trunc((movie.voteAverage/2)*100)/100;
   const stars = [];
   for (let i = 1; i <= 5; i++) {
-    if (i <= voteAverage) {
+    if (i <= Math.round(score)) {
       stars.push(<span key={i} style={{color: "#FFC530", fontSize: "22px"}}>★</span>)
     } else stars.push(<span key={i} style={{color: "#b2b2b2", fontSize: "22px"}}>★</span>)
   }
@@ -52,11 +52,9 @@ function MovieDetail() {
           <img className="img-movie-detail" src={movie.posterPath} alt={movie.title} />
           <div className="movie-info">
             <h2 data-testid="movie-title">{movie.title || "Title not available"} {movie.year ? "(" + movie.year + ")" : ""}</h2>
-            <div className="score">{stars}<p className="vote-average">{(movie.voteAverage/2).toFixed(2)}{"/5"}</p>
-            </div>
+            <div className="score">{stars}<p className="vote-average">{score}{"/5"}</p></div>
             <p data-testid="movie-overview">{movie.overview || ""}</p>
             <p><span>Genres:</span> {movie.genres? movie.genres.join(", "): "..."}</p>
-            
           </div>
         </article>}
       </main>
