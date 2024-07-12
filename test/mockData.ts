@@ -46,7 +46,9 @@ export const movieType = {
   year: "2023",
   posterPath: "https://image.tmdb.org/t/p/w500/8htJ7keZTwa08aC9OKyiqaq1cNJ.jpg",
   genres: [ "War" ],
-  overview: "A young pilot, fresh out of training, is called to join a Flight while they wait for the call to scramble."
+  overview: "A young pilot, fresh out of training, is called to join a Flight while they wait for the call to scramble.",
+  voteAverage: 7.412,
+  voteCount: 51,
 }
 
 export const movieType2 = {
@@ -55,7 +57,9 @@ export const movieType2 = {
   year: "2024",
   posterPath: "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
   genres: [ "Animation", "Adventure", "Comedy" ],
-  overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust."
+  overview: "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust.",
+  voteAverage: 7.907,
+  voteCount: 420,
 }
 
 // id: wrong data type
@@ -197,7 +201,9 @@ export const transformedData = [
       "Adventure",
       "Comedy"
     ],
-    "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone."
+    "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+    "voteAverage": 7.907,
+    "voteCount": 420,
   },
   {
     "id": 653346,
@@ -209,7 +215,9 @@ export const transformedData = [
       "Adventure",
       "Action"
     ],
-    "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike."
+    "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike.",
+    "voteAverage": 6.879,
+    "voteCount": 1150,
   }
 ]
 
@@ -231,7 +239,9 @@ export const transformedResults = {
         "Adventure",
         "Comedy"
       ],
-      "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone."
+      "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+      "voteAverage": 7.907,
+      "voteCount": 420,
     },
     {
       "id": 653346,
@@ -242,7 +252,9 @@ export const transformedResults = {
         "Adventure",
         "Action"
       ],
-      "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike."
+      "overview": "Several generations in the future following Caesar's reign, apes are now the dominant species and live harmoniously while humans have been reduced to living in the shadows. As a new tyrannical ape leader builds his empire, one young ape undertakes a harrowing journey that will cause him to question all that he has known about the past and to make choices that will define a future for apes and humans alike.",
+      "voteAverage": 6.879,
+      "voteCount": 1150,
     }
   ]
 }
@@ -308,7 +320,9 @@ export const transformedResultsPage2 = {
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/bcM2Tl5HlsvPBnL8DKP9Ie6vU4r.jpg",
       "genres": [ "Action" ],
-      "overview": "A brilliant counterterrorism analyst with a deep distrust of AI discovers it might be her only hope when a mission to capture a renegade robot goes awry."
+      "overview": "A brilliant counterterrorism analyst with a deep distrust of AI discovers it might be her only hope when a mission to capture a renegade robot goes awry.",
+      "voteAverage": 6.846,
+      "voteCount": 925,
     },
     {
       "id": 1280768,
@@ -316,7 +330,9 @@ export const transformedResultsPage2 = {
       "year": "2024",
       "posterPath": "https://image.tmdb.org/t/p/w500/mh4Mk95u7fdY4D4t5kRGQpQbVFy.jpg",
       "genres": [ "Animation", "Action", "Adventure", "Comedy" ],
-      "overview": "Lincoln and the Louds are ecstatic to welcome their new Gran-Gran, Myrtle, into the family with a tropical wedding celebration."
+      "overview": "Lincoln and the Louds are ecstatic to welcome their new Gran-Gran, Myrtle, into the family with a tropical wedding celebration.",
+      "voteAverage": 5.8,
+      "voteCount": 12,
     }
   ]
 }
@@ -371,3 +387,103 @@ export const resultGenres = [
     "name": "War"
     }  
 ]
+
+// MOCK DATA FOR GETMOVIEDETAIL
+
+export const responseMovieDetail = {
+  "adult": false,
+  "backdrop_path": "/xg27NrXi7VXCGUr7MG75UqLl6Vg.jpg",
+  "belongs_to_collection": {
+    "id": 1022790,
+    "name": "Inside Out Collection",
+    "poster_path": "/Apr19lGxP7gm6y2HQX0kqOXTtqC.jpg",
+    "backdrop_path": "/7U2m2dMSIfHx2gWXKq78Xj1weuH.jpg"
+  },
+  "budget": 200000000,
+  "genres": [
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 10751,
+      "name": "Family"
+    },
+    {
+      "id": 12,
+      "name": "Adventure"
+    },
+    {
+      "id": 35,
+      "name": "Comedy"
+    },
+    {
+      "id": 18,
+      "name": "Drama"
+    }
+  ],
+  "homepage": "https://movies.disney.com/inside-out-2",
+  "id": 1022789,
+  "imdb_id": "tt22022452",
+  "origin_country": [
+    "US"
+  ],
+  "original_language": "en",
+  "original_title": "Inside Out 2",
+  "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+  "popularity": 10615.361,
+  "poster_path": "/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
+  "production_companies": [
+    {
+      "id": 2,
+      "logo_path": "/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+      "name": "Walt Disney Pictures",
+      "origin_country": "US"
+    },
+    {
+      "id": 3,
+      "logo_path": "/1TjvGVDMYsj6JBxOAkUHpPEwLf7.png",
+      "name": "Pixar",
+      "origin_country": "US"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2024-06-11",
+  "revenue": 1216923699,
+  "runtime": 97,
+  "spoken_languages": [
+    {
+      "english_name": "English",
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "Make room for new emotions.",
+  "title": "Inside Out 2",
+  "video": false,
+  "vote_average": 7.715,
+  "vote_count": 1523,
+}
+
+export const resultMovieDetail = {
+  "id": 1022789,
+  "title": "Inside Out 2",
+  "year": "2024",
+  "posterPath": "https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
+  "genres": [
+    "Animation",
+    "Family",
+    "Adventure",
+    "Comedy",
+    "Drama"
+  ],
+  "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been running a successful operation by all accounts, aren’t sure how to feel when Anxiety shows up. And it looks like she’s not alone.",
+  "voteAverage": 7.715,
+  "voteCount": 1523
+}

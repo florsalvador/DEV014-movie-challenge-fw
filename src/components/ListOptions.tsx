@@ -15,11 +15,11 @@ function ListOptions({selectType, options, selectedOption, onChange, onClear}: L
   return (
     <>
       <form>
-        <select name="select" data-testid="select" defaultValue={selectedOption?.value} onChange={e => onChange(e.target.value)}>
+        <select name="select" data-testid="select" value={selectedOption?.value} onChange={e => onChange(e.target.value)}>
           <option value="">{selectType}</option>
           {optionElements}
         </select>
-        <button title="Clear selection" className="button-clear-select" type="reset" onClick={() => onClear()}>&#8635;</button>
+        <button title="Clear selection" className="button-clear-select" type="reset" onClick={() => onClear()}>&#8634;</button>
       </form>
     </>
   )

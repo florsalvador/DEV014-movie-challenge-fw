@@ -4,7 +4,9 @@ type Movie = {
   year: string;
   posterPath: string;
   genres: string[];
-  overview: string
+  overview: string;
+  voteAverage: number;
+  voteCount: number;
 }
 
 export default Movie

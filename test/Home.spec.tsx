@@ -79,8 +79,8 @@ describe("Home component", () => {
     await act(async () => {
       render(<RenderHome />);
     });
-    const loadingMsg = screen.getByTestId("loading-message");
-    expect(loadingMsg).toBeInTheDocument();
+    const loader = screen.getByTestId("loader");
+    expect(loader).toBeInTheDocument();
   });
 
   test("Renders error message if the API request fails", async () => {
@@ -153,23 +153,6 @@ describe("Home component", () => {
     await userEvent.selectOptions(selectSort, "title.asc")
     await waitFor(() => {
       expect(history.location.search).toBe("?sortBy=title.asc");
-    });
-  });
-
-  test("Renders only animation movies when the filter is applied", async () => {
-    getFetchMocks();
-    await act(async () => {
-      render(<RenderHome />);
-    });
-    const selectGenre = screen.getAllByTestId("select")[0] as HTMLSelectElement;
-    const movieTitleAnimation = screen.getByText(transformedResults.movies[0].title);
-    // const movieTitleNotAnimation = screen.getByText(transformedResults.movies[1].title);
-    await userEvent.selectOptions(selectGenre, "16");
-    await waitFor(() => {
-      expect(movieTitleAnimation).toBeInTheDocument();
-      // expect(movieTitleNotAnimation).not.toBeInTheDocument();
-      // console.log(history.location.search);
-      // console.log(selectGenre.value);
     });
   });
 

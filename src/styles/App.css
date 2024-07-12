@@ -1,3 +1,29 @@
 #root {
   width: 100%;
 }
+
+.loader-error-div {
+  display: flex;
+  height: 70vh;
+  justify-content: center;
+}
+
+.loader {
+  width: 22px;
+  height: 22px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+  align-self: center;
+}
+
+@keyframes l5 {
+  0%  {box-shadow: 30px 0 #FF9330, -30px 0 #FF93304D; background: #FF9330}
+  33% {box-shadow: 30px 0 #FF9330, -30px 0 #FF93304D; background: #FF93304D}
+  66% {box-shadow: 30px 0 #FF93304D, -30px 0 #FF9330; background: #FF93304D}
+  100%{box-shadow: 30px 0 #FF93304D, -30px 0 #FF9330; background: #FF9330}
+}
+
+.error {
+  align-self: center;
+}

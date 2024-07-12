@@ -1,0 +1,58 @@
+article {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  width: 100%;
+  padding-bottom: 80px;
+  padding-top: 5px;
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+article span {
+  font-weight: bold;
+}
+
+article h2 {
+  font-size: 26px;
+}
+
+.img-movie-detail {
+  width: 315px;
+  height: auto;
+}
+
+.movie-info {
+  margin-left: 60px;
+  width: 50%;
+}
+
+.movie-info h2 {
+  margin: 0;
+}
+
+.go-back-btn {
+  background: none;
+  cursor: pointer;
+  border: none;
+  color: #FF9330;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.go-back-btn span {
+  font-size: 22px;
+}
+
+.score {
+  padding: 5px 0;
+  cursor: default;
+}
+
+.vote-average {
+  font-weight: normal;
+  color: #929292;
+  text-shadow: none;
+  font-size: 13px;
+  margin: 0;
+}
