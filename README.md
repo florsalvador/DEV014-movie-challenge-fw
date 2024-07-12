@@ -1,30 +1,43 @@
-# React + TypeScript + Vite
+# Movie App 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+This Single Page Application (SPA) is a movie catalog designed to showcase, filter, and sort the extensive film collection available through The Movie Database (TMDB) API V3.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
 
-## Expanding the ESLint configuration
+*   **Movie Listing:** Users can view the catalog of movies in a table format with rows and columns.
+*   **Pagination**: Users can navigate through the movie catalog divided into pages.
+*   **Filtering & Sorting:** Enables users to filter by genre and sort by popularity and title (ascending/descending).
+*   **Movie Details:** Provides in-depth information about each movie, including title, overview, poster, rating, and genre.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+*   **React:** The core of the project, chosen for its component-based structure that promotes clean and maintainable code.
+*   **TypeScript:** Added strong typing to JavaScript, catching errors early and making the codebase more reliable.
+*   **TMDB API:** This provided the rich movie data that drives the app. Integration was smooth and let me focus on the front-end.
+*   **Testing (Jest):**  Wrote unit and integration tests with Jest to ensure the app works as expected and is less prone to bugs.
+*   **Deployment (Vercel):**  Deployed on Vercel for easy access.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Development Process
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 1.  Prototyping:
+
+- Started with a low-fidelity prototype (provided by the Product Owner) to visualize the basic layout and user flow.
+- Translated the low-fidelity prototype into a high-fidelity Figma design, refining the visual aspects and interactions.
+
+![Figma design](https://i.ibb.co/q93TLbL/movie-design.png "Figma design")
+
+### 2.  Implementation:
+
+- Built the React components, following the design and adhering to best practices.
+- Integrated the TMDB API to fetch and display movie data.
+- Implemented filtering, sorting, and pagination functionality.
+- Created a detailed movie view for individual movie information.
+- Wrote comprehensive unit and integration tests using Jest and mocks.
+
+### 3. Deployment:
+
+- Deployed the application to Vercel, utilizing its streamlined deployment process and robust infrastructure.
+
+🚀🚀
