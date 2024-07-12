@@ -26,7 +26,7 @@ This Single Page Application (SPA) is a movie catalog designed to showcase, filt
 - Started with a low-fidelity prototype (provided by the Product Owner) to visualize the basic layout and user flow.
 - Translated the low-fidelity prototype into a high-fidelity Figma design, refining the visual aspects and interactions.
 
-![Figma design](https://i.ibb.co/q93TLbL/movie-design.png "Figma design")
+<img src="https://raw.githubusercontent.com/florsalvador/movie-challenge/movie-details/src/assets/figma-design.png" width="70%">
 
 ### 2.  Implementation:
 
